@@ -12,7 +12,7 @@ gem 'rails', '~> 5.1.4'
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
-gem 'rails-auth'
+gem 'devise'
 # Use SCSS for stylesheets
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'sass-rails', '~> 5.0'
@@ -27,14 +27,18 @@ gem 'jquery-ui-rails'
 gem 'jquery-rails'
 gem 'webpacker', '~> 3.0', '>= 3.0.2'
 gem 'react-rails', '~> 2.4'
+
+gem 'awesome_print'
+gem 'htmlentities', '~> 4.3', '>= 4.3.4'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+gem 'seed_dump', '~> 3.2', '>= 3.2.4'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', platforms: :ruby
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
