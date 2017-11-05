@@ -1,0 +1,21 @@
+<main role="main">
+  <div class="container" id="auth">
+    <h2>Заного отправить инструкции по разблокировке</h2>
+    <div class="form-signin">
+      <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Отправить" %>
+          </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</main>

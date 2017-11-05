@@ -1,0 +1,48 @@
+<main role="main">
+  <div class="container form-signin" id="auth">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
+        <h2>Редактирование профиля</h2>
+        <%= devise_error_messages! %>
+
+        <div class="form-group">
+          <%= f.label :email %><br/>
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>В данный момент ожидается подтверждение, отправленное на адрес <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.label :password, (capture do %>
+              Пароль <i>(оставьте нетронутым, если не хотите менять)</i>
+          <% end) %>
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+          <% if @minimum_password_length %>
+              <em>Минимум <%= @minimum_password_length %> смволов</em>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation, "Подтверждение пароля" %><br/>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :current_password, (capture do %>
+              Текущий пароль <i>(нужен для подтверждения изменений)</i>
+          <% end) %>
+          <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Обновить", class: "btn btn-lg btn-primary btn-block" %>
+        </div>
+    <% end %>
+
+    <h3>Удалить аккаунт</h3>
+
+    <p><%= button_to "Удалить", registration_path(resource_name), data: {confirm: "Вы уверены?"}, method: :delete, class: "btn btn-lg btn-danger btn-block" %></p>
+
+  </div>
+</main>
