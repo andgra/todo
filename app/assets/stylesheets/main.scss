@@ -5,8 +5,7 @@
 
 
 body {
-  //background-color: #f0f0f0;
-  padding: 56px;
+  padding: 56px 0;
 }
 
 .debug_dump {
@@ -37,4 +36,8 @@ body {
       z-index: 2;
     }
   }
+}
+
+.btn-link{
+  cursor: pointer;
 }
