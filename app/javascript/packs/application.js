@@ -9,6 +9,16 @@
 
 console.log('Hello World from Webpacker')
 // Support component names relative to this directory:
-var componentRequireContext = require.context("components", true)
-var ReactRailsUJS = require("react_ujs")
-ReactRailsUJS.useContext(componentRequireContext)
+
+import Vue from 'vue/dist/vue'
+import Todo from '../components/todo.vue'
+
+document.addEventListener('DOMContentLoaded', () => {
+    if(document.getElementById('todo_container')) {
+        Vue.component('Todo', Todo);
+        const app = new Vue({
+            el: '#todo_container',
+        })
+    }
+
+})

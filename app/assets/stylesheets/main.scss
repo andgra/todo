@@ -1,6 +1,9 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
 @import "bootstrap";
 
 
@@ -40,4 +43,15 @@ body {
 
 .btn-link{
   cursor: pointer;
+}
+
+.tasks {
+  background-color: #f8f9fa;
+  height: 500px;
+  border: 1px solid #999999;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  li {
+    list-style: none;
+  }
 }

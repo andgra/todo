@@ -1,0 +1,4 @@
+<div id="todo_container">
+	<%= @tasks.to_json %>
+	<Todo :tasks="<%= @tasks.to_json %>"></Todo>
+</div>

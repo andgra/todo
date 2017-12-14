@@ -27,6 +27,7 @@ gem 'jquery-ui-rails'
 gem 'jquery-rails'
 gem 'webpacker', '~> 3.0', '>= 3.0.2'
 gem 'react-rails', '~> 2.4'
+gem 'font-awesome-sass', '~> 4.4.0'
 
 gem 'awesome_print'
 gem 'htmlentities', '~> 4.3', '>= 4.3.4'
