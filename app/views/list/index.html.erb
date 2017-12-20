@@ -1,0 +1,120 @@
+<div id="todo_container" class="container">
+	<h4>
+		<%= t('your_lists') %>
+		<button class="btn btn-link lists-add pull-right" type="button"><%= t('add_list') %></button>
+	</h4>
+	<div class="lists">
+		<table>
+			<thead>
+			<tr>
+				<th width="30px">id</th>
+				<th width="320px"><%= t('title') %></th>
+				<th colspan="2" style="text-align: center"><%= t('actions') %></th>
+			</tr>
+			</thead>
+			<tbody>
+			<% @lists.each do |list| %>
+				<tr class="lists-list-item" data-id="<%= list.id %>">
+					<td><%= list.id %></td>
+					<td class="toggle-hidden lists-list-item-title"><%= link_to list.title, tasks_path(list) %></td>
+					<td class="toggle-hidden lists-list-item-input hidden"><input type="text" class="form-control" value="<%= list.title %>"></td>
+					<td class="toggle-hidden lists-list-item-edit"><button class="btn btn-link" type="button"><%= t('edit') %></button></td>
+					<td class="toggle-hidden lists-list-item-save hidden"><button class="btn btn-link" type="button"><%= t('save') %></button></td>
+					<td class="lists-list-item-del"><button class="btn btn-link" type="button"><%= t('delete') %></button></td>
+				</tr>
+			<% end %>
+			<tr class="lists-list-item-add hidden">
+				<td></td>
+				<td class="lists-list-item-input"><input type="text" class="form-control"></td>
+				<td class="lists-list-item-create"><button class="btn btn-link" type="button"><%= t('save') %></button></td>
+				<td class="lists-list-item-del"><button class="btn btn-link" type="button"><%= t('delete') %></button></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<% content_for :js do %>
+	<script>
+        $(function() {
+            $(document.body).on('click','.lists-list-item-edit button', function(e) {
+                var id = $(e.target).parents('.lists-list-item').data('id');
+                $('.lists-list-item[data-id="'+id+'"] .toggle-hidden').toggleClass('hidden');
+            });
+            $(document.body).on('click','.lists-list-item-save button', function(e) {
+                var id = $(e.target).parents('.lists-list-item').data('id');
+                var title = $('.lists-list-item[data-id="'+id+'"] .lists-list-item-input input').val();
+                $.ajax({
+                    type: "POST",
+                    url: "<%= listAjax_path %>",
+                    data: {
+                        type: 'edit',
+                        list_id: id,
+                        title: title
+                    },
+                    success: function(data) {
+                        if(data.code) {
+                            $('.lists-list-item[data-id="'+id+'"] .toggle-hidden').toggleClass('hidden');
+                            $('.lists-list-item[data-id="'+id+'"] .lists-list-item-title a').text(title);
+                        }
+                    },
+                    dataType: 'json'
+                });
+            });
+            $(document.body).on('click','.lists-list-item-del button', function(e) {
+                var id = $(e.target).parents('.lists-list-item').data('id');
+                $.ajax({
+                    type: "POST",
+                    url: "<%= listAjax_path %>",
+                    data: {
+                        type: 'del',
+                        list_id: id
+                    },
+                    success: function(data) {
+                        if(data.code) {
+                            $('.lists-list-item[data-id="'+id+'"]').remove();
+                        }
+                    },
+                    dataType: 'json'
+                });
+            });
+            $(document.body).on('click','.lists-add', function(e) {
+                $('.lists-list-item-add').removeClass('hidden');
+            });
+            $(document.body).on('click','.lists-list-item-add .lists-list-item-del button', function(e) {
+                $('.lists-list-item-add .lists-list-item-input input').val('');
+                $('.lists-list-item-add').addClass('hidden');
+            });
+            var hrefTemplate = '<%= link_to '#_#', tasks_path('to_replace') %>';
+            $(document.body).on('click','.lists-list-item-add .lists-list-item-create button', function(e) {
+                var title = $('.lists-list-item-add .lists-list-item-input input').val();
+                $.ajax({
+                    type: "POST",
+                    url: "<%= listAjax_path %>",
+                    data: {
+                        type: 'add',
+                        title: title
+                    },
+                    success: function(data) {
+                        if(data.code) {
+                            $('.lists-list-item-add .lists-list-item-input input').val('');
+                            $('.lists-list-item-add').addClass('hidden');
+
+                            var $tr = $('<tr class="lists-list-item" data-id="'+data.text+'">\n' +
+                                '\t\t      <td>'+data.text+'</td>\n' +
+                                '\t\t      <td class="toggle-hidden lists-list-item-title">'+hrefTemplate.replace('to_replace',data.text).replace('#_#',title)+'</td>\n' +
+                                '\t\t      <td class="toggle-hidden lists-list-item-input hidden"><input type="text" class="form-control" value="'+title+'"></td>\n' +
+                                '\t\t      <td class="toggle-hidden lists-list-item-edit"><button class="btn btn-link" type="button"><%= t("edit") %></button></td>\n' +
+                                '\t\t      <td class="toggle-hidden lists-list-item-save hidden"><button class="btn btn-link" type="button"><%= t("save") %></button></td>\n' +
+                                '\t\t      <td class="lists-list-item-del"><button class="btn btn-link" type="button"><%= t("delete") %></button></td>\n' +
+                                '\t      </tr>');
+                            $tr.insertBefore('.lists-list-item-add');
+
+                        }
+                    },
+                    dataType: 'json'
+                });
+            });
+        });
+	</script>
+<% end %>

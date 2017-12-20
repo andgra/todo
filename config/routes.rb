@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  get '/w', to: 'todo#lists'
-  get '/w/:id', to: 'todo#tasks'
+  get '/lang/:locale', to: 'main#lang', as: 'lang'
+  get '/w', to: 'list#index', as: 'lists'
+  post '/w/ajax', to: 'list#ajax', as: 'listAjax'
+  get '/w/:id', to: 'task#index', as: 'tasks'
+  post '/w/:id/ajax', to: 'task#ajax', as: 'taskAjax'
 
   devise_for :users
 

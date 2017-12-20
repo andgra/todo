@@ -1,0 +1,4 @@
+<div id="todo_container" class="container">
+	<h4><%= t('list') %> "<%= @list.title %>"</h4>
+	<Todo :tasks="<%= @tasks.to_json %>" :list_id="<%= @list.id %>" :ajax_url="'<%= taskAjax_path %>'"></Todo>
+</div>

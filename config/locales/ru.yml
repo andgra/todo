@@ -1,0 +1,52 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+ru:
+  lang: "язык"
+  index: "Главная"
+  lists: "Списки"
+  list: "Список"
+  your_lists: "Ваши списки:"
+  add_task: "Список"
+  add_list: "Добавить список"
+  delete: "удалить"
+  edit: "изменить"
+  save: "сохранить"
+  title: "Название"
+  actions: "Действия"
+  to_work: "Перейти к работе"
+  main_head: "Ваш персональный сервис управления задачами"
+  available: "Доступно"
+  available_text: "Благодяра данному сервису мы всегда можете следить и управлять текущими задачами. С любого устройства и системы."
+  functionally: "Функционально"
+  functionally_text: "На этом сайте вы можете удобно управлять своими задачами - динамический интерфейс значительно повышает скорость работы!"
+  conveniently: "Удобно"
+  conveniently_text: "Понятный и доступный интерфейс, а также приятный дизайн благоприятно скажутся на вашей работе."

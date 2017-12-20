@@ -3,8 +3,8 @@
   <div class="jumbotron">
     <div class="container">
       <h1 class="display-3">todo</h1>
-      <p>Ваш персональный сервис управления задачами</p>
-      <p><a class="btn btn-primary btn-lg" href="<%= w_path %>" role="button">Перейти к работе &raquo;</a></p>
+      <p><%= t('main_head') %></p>
+      <p><a class="btn btn-primary btn-lg" href="<%= lists_path %>" role="button"><%= t('to_work') %> &raquo;</a></p>
     </div>
   </div>
   <div class="container text-center">
@@ -17,16 +17,16 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <h2>Доступно</h2>
-          <p>Благодяра данному сервису мы всегда можете следить и управлять текущими задачами. С любого устройства и системы.</p>
+          <h2><%= t('available') %></h2>
+          <p><%= t('available_text') %></p>
         </div>
         <div class="col-md-4">
-          <h2>Функционально</h2>
-          <p>На этом сайте вы можете управлять как своими личными задачами, так и создать команду и иметь доступ к командному управлению!</p>
+          <h2><%= t('functionally') %></h2>
+          <p><%= t('functionally_text') %></p>
         </div>
         <div class="col-md-4">
-          <h2>Удобно</h2>
-          <p>Понятный и доступный интерфейс, а также приятный дизайн благоприятно скажутся на вашей работе.</p>
+          <h2><%= t('conveniently') %></h2>
+          <p><%= t('conveniently_text') %></p>
         </div>
       </div>
     </div>

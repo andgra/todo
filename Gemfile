@@ -28,11 +28,12 @@ gem 'jquery-rails'
 gem 'webpacker', '~> 3.0', '>= 3.0.2'
 gem 'react-rails', '~> 2.4'
 gem 'font-awesome-sass', '~> 4.4.0'
+gem 'rails-i18n'
 
 gem 'awesome_print'
 gem 'htmlentities', '~> 4.3', '>= 4.3.4'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 gem 'seed_dump', '~> 3.2', '>= 3.2.4'

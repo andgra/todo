@@ -6,16 +6,22 @@
 	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active">
-				<a class="nav-link" href="<%= root_path %>">Главная <!--<span class="sr-only">(current)</span>--></a>
+				<a class="nav-link" href="<%= root_path %>"><%= t('index') %> <!--<span class="sr-only">(current)</span>--></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">Проекты</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">Команды</a>
+				<a class="nav-link" href="<%= lists_path %>"><%= t('lists') %></a>
 			</li>
 		</ul>
 		<div class="float-right">
+			<div class="dropdown" style="display: inline-block">
+				<button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<%= t('lang') %>
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item" href="<%= lang_path(:ru) %>">ru</a>
+					<a class="dropdown-item" href="<%= lang_path(:en) %>">en</a>
+				</div>
+			</div>
 			<% if (user_signed_in?) %>
 				<%= link_to "Профиль", edit_user_registration_path, class: "btn btn-link" %>
 				<%= button_to "Выйти", destroy_user_session_path, {form_class: 'd-inline', method: :delete, class: "btn btn-link c-pointer"} %>
