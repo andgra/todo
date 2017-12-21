@@ -24,7 +24,7 @@ class ListController < ApplicationController
         render json: ret
       when 'add'
         title = params[:title]
-        list = List.create(title: title)
+        list = List.create(title: title, user_id: current_user.id)
         ret[:code] = 1
         ret[:text] = list.id
         render json: ret
