@@ -1,7 +1,7 @@
 class ListController < ApplicationController
   before_action :authenticate_user!
   def index
-    @lists = List.all
+    @lists = current_user.lists
   end
 
   def ajax
